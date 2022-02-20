@@ -1,5 +1,45 @@
-<form action="/" method="post">
-    <label for="location">Location:</label>
-    <input type="text" name="location" placeholder="location">
-    <input type="submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position:block;
+        top: 0;
+        bottom: 0;
+        width: 400px;
+        height: 400px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <form action="/" method="post">
+      <label for="location">Location:</label>
+      <input type="text" name="location" placeholder="location" />
+      <input type="submit" />
+    </form>
+
+    <script>
+      mapboxgl.accessToken = "<%-process.env.mapbox_token%>";
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        style: "mapbox://styles/mapbox/streets-v11", // style URL
+        center: [75.933324, 11.33897], // starting position [lng, lat]
+        zoom: 9, // starting zoom
+      });
+    </script>
+  </body>
+</html>
